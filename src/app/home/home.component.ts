@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { QuoteClass } from '../classes/quote';
+import { QuoteService } from '../services/quote.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  randomQuote: QuoteClass = null;
+  quoteLiked = false;
+
+  constructor(private quoteService: QuoteService) { }
 
   ngOnInit(): void {
+    this.getRandomQuote();
   }
 
+  getRandomQuote(){
+    this.quoteService.getRandomQuote(this.randomQuote).subscribe(
+      (quote: QuoteClass) => {
+        this.randomQuote = quote;
+        this.quoteLiked = false;
+      }
+    );
+  }
+
+  upvoteQuote(){
+    if(!this.quoteLiked && this.randomQuote){
+      this.quoteService.upvoteQuote(this.randomQuote).subscribe(
+        () => this.quoteLiked = true
+      );
+    }
+  }
+
+  getRandomAboutCharacter(name: string){
+    this.quoteService.randomAboutCharacter(name).subscribe(
+      (quote: QuoteClass) => {
+        this.randomQuote = quote;
+        this.quoteLiked = false;
+      }
+    );
+  }
 }

@@ -1,16 +1,14 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
     <mat-toolbar-row>
-        <span>Example Angular 9</span>
+        <span>Star Wars Quotes</span>
         <span class="example-spacer"></span>
         <a mat-stroked-button href="https://github.com/roveroniandrea">
-            Follow on github? 
+            Follow on github?
             <mat-icon aria-hidden="false" aria-label="Example home icon">thumb_up_alt</mat-icon>
         </a>
     </mat-toolbar-row>
     <mat-toolbar-row>
-        <nav mat-tab-nav-bar>
-            <a mat-tab-link *ngFor="let link of links" [routerLink]="[link.url]" [active]="activeLink == link.url">
-                {{link.label}} </a>
-        </nav>
+        <button mat-flat-button *ngFor="let link of links" [routerLink]="[link.url]"
+            [color]="activeLink == link.url? 'accent': ''" class="margin-right8">{{link.label}}</button>
     </mat-toolbar-row>
 </mat-toolbar>

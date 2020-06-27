@@ -1,7 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --basic-color: #212121;
+    --primary-color: #9c27b0;
+    --accent-color: #69f0ae;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 .example-spacer {
     flex: 1 1 auto;
+}
+
+.background-basic{
+    background-color: var(--basic-color);
+}
+
+.color-basic{
+    color: var(--basic-color);
+}
+
+.background-primary{
+    background-color: var(--primary-color);
+}
+
+.color-primary{
+    color: var(--primary-color);
+}
+
+.background-accent{
+    background-color: var(--accent-color);
+}
+
+.color-accent{
+    color: var(--accent-color);
+}
+
+.color-white{
+    color: white;
+}
+
+.margin-right8{
+    margin-right: 8px!IMPORTANT;
 }
