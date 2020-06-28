@@ -16,6 +16,10 @@ export class MainMenuComponent implements OnInit {
       label: 'Home'
     },
     {
+      url: '/submit',
+      label: 'Submit quote'
+    },
+    {
       url: '/about',
       label: 'About'
     }];

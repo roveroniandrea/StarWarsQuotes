@@ -15,6 +15,8 @@ import { AboutComponent } from './about/about.component';
 import { CharactersQuotePipe } from './pipes/characters-quote.pipe';
 import { QuoteTextComponent } from './quote-text/quote-text.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SubmitQuoteComponent } from './submit-quote/submit-quote.component';
+import { AlignCenterComponent } from './align-center/align-center.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AboutComponent,
     CharactersQuotePipe,
     QuoteTextComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SubmitQuoteComponent,
+    AlignCenterComponent
   ],
   imports: [
     BrowserModule,

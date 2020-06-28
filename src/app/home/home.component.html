@@ -1,33 +1,29 @@
 <app-main-menu></app-main-menu>
-<mat-grid-list cols="1" rowHeight="fit" *ngIf="randomQuote" class="background-basic" style="height: 70%;">
-    <mat-grid-tile class="color-white">
-        <div style="width: 60%;">
-            <div [@fadeIn]="fadeIn? true: false">
-                <app-quote-text [quote]="randomQuote"></app-quote-text>
-            </div>
-            <mat-list style="text-align:center; margin-top: 50px;">
-                <mat-list-item>
-                    <button mat-flat-button color="primary" (click)="upvoteQuote()" class="margin-right8">
-                        <mat-icon *ngIf="quoteLiked; else notLiked">favorite</mat-icon>
-                        <ng-template #notLiked>
-                            <mat-icon>favorite_border</mat-icon>
-                        </ng-template>
-                        {{randomQuote.likes}}
-                    </button>
-                    <button mat-flat-button color="primary" (click)="getRandomQuote()" class="margin-right8">
-                        <mat-icon>cached</mat-icon>
-                        "I want more"
-                    </button>
-                </mat-list-item>
-                <mat-divider [vertical]="true" [inset]="true"></mat-divider>
-                <mat-list-item>
-                    <button mat-flat-button *ngFor="let name of randomQuote.characters" color="primary"
-                        (click)="getRandomQuoteAboutCharacter(name)" class="margin-right8">
-                        <mat-icon>cached</mat-icon>
-                        Another from {{name}}
-                    </button>
-                </mat-list-item>
-            </mat-list>
+<app-align-center *ngIf="randomQuote">
+        <div [@fadeIn]="fadeIn? true: false">
+            <app-quote-text [quote]="randomQuote"></app-quote-text>
         </div>
-    </mat-grid-tile>
-</mat-grid-list>
+        <mat-list style="text-align:center; margin-top: 50px;">
+            <mat-list-item>
+                <button mat-flat-button color="primary" (click)="upvoteQuote()" class="margin-right8">
+                    <mat-icon *ngIf="quoteLiked; else notLiked">favorite</mat-icon>
+                    <ng-template #notLiked>
+                        <mat-icon>favorite_border</mat-icon>
+                    </ng-template>
+                    {{randomQuote.likes}}
+                </button>
+                <button mat-flat-button color="primary" (click)="getRandomQuote()" class="margin-right8">
+                    <mat-icon>cached</mat-icon>
+                    "I want more"
+                </button>
+            </mat-list-item>
+            <mat-divider [vertical]="true" [inset]="true"></mat-divider>
+            <mat-list-item>
+                <button mat-flat-button *ngFor="let name of randomQuote.characters" color="primary"
+                    (click)="getRandomQuoteAboutCharacter(name)" class="margin-right8">
+                    <mat-icon>cached</mat-icon>
+                    Another from {{name}}
+                </button>
+            </mat-list-item>
+        </mat-list>
+</app-align-center>

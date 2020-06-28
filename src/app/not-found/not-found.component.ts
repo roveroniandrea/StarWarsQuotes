@@ -10,7 +10,7 @@ export class NotFoundComponent implements OnInit {
   notFoundQuote: QuoteClass;
 
   constructor() { 
-    this.notFoundQuote = new QuoteClass({text: 'This is not the quote we\'re looking for. Move along!', characters: ['Andrea Roveroni']});
+    this.notFoundQuote = new QuoteClass({text: 'This is not the quote you\'re looking for. Move along!', characters: ['Andrea Roveroni']});
   }
 
   ngOnInit(): void {

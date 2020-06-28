@@ -1,8 +1,4 @@
 <app-main-menu></app-main-menu>
-<mat-grid-list cols="1" rowHeight="fit" *ngIf="randomQuote" class="background-basic" style="height: 70%;">
-    <mat-grid-tile class="color-white">
-        <div style="width: 60%;">
-            <app-quote-text [quote]="notFoundQuote"></app-quote-text>
-        </div>
-    </mat-grid-tile>
-</mat-grid-list>
+<app-align-center>
+    <app-quote-text [quote]="notFoundQuote"></app-quote-text>
+</app-align-center>
