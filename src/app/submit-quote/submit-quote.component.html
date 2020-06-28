@@ -1,7 +1,7 @@
 <app-main-menu></app-main-menu>
 <app-align-center>
-    <form [formGroup]="quoteForm" (submit)="submitForm()">
-        <mat-form-field appearance="outline">
+    <form [formGroup]="quoteForm" (submit)="openDialog()">
+        <mat-form-field appearance="outline" style="width:100%">
             <mat-label>Quote</mat-label>
             <textarea cdkTextareaAutosize cdkAutosizeMinRows="1" matInput type="text" formControlName="text"></textarea>
         </mat-form-field>
@@ -16,11 +16,12 @@
                         {{quoteForm.value.characters?.length === 2 ? 'other' : 'others'}})
                     </span>
                 </mat-select-trigger>
-                <mat-option *ngFor="let character of allCharacters" [value]="character">{{character}}</mat-option>
+                <mat-option *ngFor="let character of allCharacters" [value]="character">{{character}}
+                </mat-option>
             </mat-select>
         </mat-form-field>
         <br>
         <br>
-        <button mat-flat-button color="primary" type="submit" [disabled]="!quoteForm.valid">Submit</button>
+        <button mat-flat-button color="primary" type="submit" [disabled]="!quoteForm.valid || isSubmitting">{{isSubmitting? 'Submitting...' : 'Submit'}}</button>
     </form>
 </app-align-center>

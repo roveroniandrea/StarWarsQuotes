@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { QuoteTextComponent } from './quote-text/quote-text.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SubmitQuoteComponent } from './submit-quote/submit-quote.component';
 import { AlignCenterComponent } from './align-center/align-center.component';
+import { DialogSubmitComponent } from './dialog-submit/dialog-submit.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { AlignCenterComponent } from './align-center/align-center.component';
     QuoteTextComponent,
     NotFoundComponent,
     SubmitQuoteComponent,
-    AlignCenterComponent
+    AlignCenterComponent,
+    DialogSubmitComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { AlignCenterComponent } from './align-center/align-center.component';
     MatGridListModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
 <app-main-menu></app-main-menu>
-<app-align-center>
+<app-align-center *ngIf="notFoundQuote">
     <app-quote-text [quote]="notFoundQuote"></app-quote-text>
 </app-align-center>

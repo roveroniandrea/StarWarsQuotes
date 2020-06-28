@@ -51,4 +51,12 @@ export class QuoteService {
       observer.next(ch);
     });
   }
+
+  public uploadQuote(quote: QuoteClass): Observable<QuoteClass> {
+    return new Observable(observer => {
+      setTimeout(() => {
+        observer.next(quote);
+      }, 1000);
+    });
+  }
 }
