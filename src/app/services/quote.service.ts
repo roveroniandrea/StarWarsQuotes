@@ -59,4 +59,8 @@ export class QuoteService {
       }, 1000);
     });
   }
+
+  public reportQuote(quote: QuoteClass):Observable<QuoteClass>{
+    return this.getRandomQuote(quote);
+  }
 }

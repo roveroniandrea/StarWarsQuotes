@@ -4,6 +4,8 @@ import { QuoteService } from '../services/quote.service';
 import { QuoteClass } from '../classes/quote';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogSubmitComponent } from '../dialog-submit/dialog-submit.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-submit-quote',
@@ -14,13 +16,14 @@ export class SubmitQuoteComponent implements OnInit {
 
   allCharacters: string[];
   isSubmitting = false;
+  maxCharacters = 3;
 
   quoteForm = new FormGroup({
     text: new FormControl('', Validators.required),
-    characters: new FormControl([], Validators.required)
+    characters: new FormControl([], [Validators.required, Validators.maxLength(this.maxCharacters)])
   })
 
-  constructor(private quoteService: QuoteService, private dialog: MatDialog) {
+  constructor(private quoteService: QuoteService, private dialog: MatDialog, private submittedSnackBar: MatSnackBar, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -41,6 +44,8 @@ export class SubmitQuoteComponent implements OnInit {
     this.isSubmitting = true;
     this.quoteService.uploadQuote(newQuote).subscribe(res => {
       this.isSubmitting = false;
+      this.submittedSnackBar.open('Submitted successfully!', '', { duration: 2000 });
+      this.router.navigate(['/']);
     });
   }
 }
