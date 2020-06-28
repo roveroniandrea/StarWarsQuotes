@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { AboutComponent } from './about/about.component';
 import { CharactersQuotePipe } from './pipes/characters-quote.pipe';
+import { QuoteTextComponent } from './quote-text/quote-text.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CharactersQuotePipe } from './pipes/characters-quote.pipe';
     HomeComponent,
     MainMenuComponent,
     AboutComponent,
-    CharactersQuotePipe
+    CharactersQuotePipe,
+    QuoteTextComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
