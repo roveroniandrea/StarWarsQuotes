@@ -23,14 +23,14 @@ export class QuoteService {
         index = Math.floor(Math.random() * this.quotes.length);
       }
       while (this.quotes[index] == prevQuote && prevQuote);
-      setTimeout(() => observer.next(this.quotes[index]), 100);
+      setTimeout(() => observer.next(this.quotes[index]), 1000);
     });
   }
 
   public upvoteQuote(quote: QuoteClass): Observable<QuoteClass> {
     return new Observable(observer => {
       quote.likes++;
-      observer.next(quote);
+      setTimeout(() => observer.next(quote), 1000);
     });
   }
 
@@ -41,14 +41,14 @@ export class QuoteService {
         index = Math.floor(Math.random() * this.quotes.length);
       }
       while (!this.quotes[index].characters.includes(name));
-      setTimeout(() => observer.next(this.quotes[index]), 100);
+      setTimeout(() => observer.next(this.quotes[index]), 1000);
     });
   }
 
   public getAllCharacters(): Observable<string[]> {
     return new Observable(observer => {
       let ch = ['Ahsoka Tano', 'Anakin Skywalker', 'Darth Vader', 'Darth Sidious', 'Obi-Wan Kenobi', 'Cal Kestis'];
-      observer.next(ch);
+      setTimeout(() => observer.next(ch), 1000);
     });
   }
 
@@ -60,7 +60,7 @@ export class QuoteService {
     });
   }
 
-  public reportQuote(quote: QuoteClass):Observable<QuoteClass>{
+  public reportQuote(quote: QuoteClass): Observable<QuoteClass> {
     return this.getRandomQuote(quote);
   }
 }
