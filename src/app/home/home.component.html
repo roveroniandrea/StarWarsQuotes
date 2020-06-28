@@ -6,14 +6,14 @@
     <br>
     <mat-list style="text-align:center; margin-top: 50px;" role="list">
         <mat-list-item role="listitem">
-            <button mat-flat-button color="primary" (click)="upvoteQuote()" class="margin-right8 margin-bottom8">
+            <button mat-flat-button color="primary" (click)="upvoteQuote()" class="margin-right8 margin-bottom8" [disabled]="upvoting || quoteLiked">
                 <mat-icon *ngIf="quoteLiked; else notLiked">favorite</mat-icon>
                 <ng-template #notLiked>
                     <mat-icon>favorite_border</mat-icon>
                 </ng-template>
                 {{randomQuote.likes}}
             </button>
-            <button mat-flat-button color="primary" (click)="getRandomQuote()" class="margin-right8 margin-bottom8">
+            <button mat-flat-button color="primary" (click)="getRandomQuote()" class="margin-right8 margin-bottom8" [disabled]="requestingQuote">
                 <mat-icon>cached</mat-icon>
                 "I want more"
             </button>
@@ -21,7 +21,7 @@
         <mat-divider [vertical]="true" [inset]="true"></mat-divider>
         <mat-list-item role="listitem">
             <button mat-flat-button *ngFor="let name of randomQuote.characters" color="primary"
-                (click)="getRandomQuoteAboutCharacter(name)" class="margin-right8 margin-bottom8">
+                (click)="getRandomQuoteAboutCharacter(name)" class="margin-right8 margin-bottom8" [disabled]="requestingQuote">
                 <mat-icon>cached</mat-icon>
                 Another from {{name}}
             </button>

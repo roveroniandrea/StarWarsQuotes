@@ -17,9 +17,10 @@ export class SubmitQuoteComponent implements OnInit {
   allCharacters: string[];
   isSubmitting = false;
   maxCharacters = 3;
+  maxTextLength = 800;
 
   quoteForm = new FormGroup({
-    text: new FormControl('', Validators.required),
+    text: new FormControl('', [Validators.required, Validators.maxLength(this.maxTextLength)]),
     characters: new FormControl([], [Validators.required, Validators.maxLength(this.maxCharacters)])
   })
 

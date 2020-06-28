@@ -1,7 +1,7 @@
 <app-main-menu></app-main-menu>
 <app-align-center>
     <form [formGroup]="quoteForm" (submit)="openDialog()">
-        <mat-form-field appearance="outline" style="width:100%; font-size: medium;" hintLabel="Only Star Wars quotes! :)">
+        <mat-form-field appearance="outline" style="width:100%; font-size: medium;" [hintLabel]="'Max length: ' + maxTextLength">
             <mat-label>Quote</mat-label>
             <textarea cdkTextareaAutosize cdkAutosizeMinRows="1" matInput type="text" formControlName="text"></textarea>
         </mat-form-field>

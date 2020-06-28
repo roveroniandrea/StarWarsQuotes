@@ -29,8 +29,10 @@ export class QuoteService {
 
   public upvoteQuote(quote: QuoteClass): Observable<QuoteClass> {
     return new Observable(observer => {
-      quote.likes++;
-      setTimeout(() => observer.next(quote), 1000);
+      setTimeout(() => {
+        quote.likes++;
+        observer.next(quote);
+      }, 1000);
     });
   }
 

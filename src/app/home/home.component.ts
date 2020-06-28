@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
   randomQuote: QuoteClass = null;
   quoteLiked = false;
   fadeIn = true;
+  upvoting = false;
+  requestingQuote = false;
 
   constructor(private quoteService: QuoteService, private reportSnakBar: MatSnackBar) { }
 
@@ -33,29 +35,35 @@ export class HomeComponent implements OnInit {
 
   getRandomQuote() {
     this.fadeIn = false;
+    this.requestingQuote = true;
     this.quoteService.getRandomQuote(this.randomQuote).subscribe(
       (quote: QuoteClass) => {
         this.randomQuote = quote;
         this.quoteLiked = false;
         this.fadeIn = true;
+        this.requestingQuote = false;
       }
     );
   }
 
   upvoteQuote() {
     if (!this.quoteLiked && this.randomQuote) {
-      this.quoteService.upvoteQuote(this.randomQuote).subscribe(
-        () => this.quoteLiked = true
-      );
+      this.upvoting = true;
+      this.quoteService.upvoteQuote(this.randomQuote).subscribe(() => {
+        this.upvoting = false;
+        this.quoteLiked = true;
+      });
     }
   }
 
   getRandomQuoteAboutCharacter(name: string) {
     if (name) {
+      this.requestingQuote = true;
       this.quoteService.randomAboutCharacter(name).subscribe(
         (quote: QuoteClass) => {
           this.randomQuote = quote;
           this.quoteLiked = false;
+          this.requestingQuote = false;
         }
       );
     }
