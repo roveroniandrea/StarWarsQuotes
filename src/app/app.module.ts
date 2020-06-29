@@ -24,6 +24,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SubmitQuoteComponent } from './submit-quote/submit-quote.component';
 import { AlignCenterComponent } from './align-center/align-center.component';
 import { DialogSubmitComponent } from './dialog-submit/dialog-submit.component';
+import { SelectCharacterFormPipe } from './pipes/select-character-form.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DialogSubmitComponent } from './dialog-submit/dialog-submit.component';
     NotFoundComponent,
     SubmitQuoteComponent,
     AlignCenterComponent,
-    DialogSubmitComponent
+    DialogSubmitComponent,
+    SelectCharacterFormPipe
   ],
   imports: [
     BrowserModule,

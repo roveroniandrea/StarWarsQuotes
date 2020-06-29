@@ -1,21 +1,19 @@
 <app-main-menu></app-main-menu>
 <app-align-center>
     <form [formGroup]="quoteForm" (submit)="openDialog()">
-        <mat-form-field appearance="outline" style="width:100%; font-size: medium;" [hintLabel]="'Max length: ' + maxTextLength">
+        <mat-form-field appearance="outline" style="width:100%; font-size: medium;"
+            [hintLabel]="'Max length: ' + maxTextLength">
             <mat-label>Quote</mat-label>
             <textarea cdkTextareaAutosize cdkAutosizeMinRows="1" matInput type="text" formControlName="text"></textarea>
         </mat-form-field>
         <br>
         <br>
-        <mat-form-field appearance="outline" [hintLabel]="'Max ' + maxCharacters + ' characters'" style="font-size: medium;">
+        <mat-form-field appearance="outline" [hintLabel]="'Max ' + maxCharacters + ' characters'"
+            style="width:100%; font-size: medium;">
             <mat-label>Characters</mat-label>
             <mat-select matInput formControlName="characters" multiple>
                 <mat-select-trigger>
-                    {{quoteForm.value.characters ? quoteForm.value.characters[0] : ''}}
-                    <span *ngIf="quoteForm.value.characters?.length > 1" class="example-additional-selection">
-                        (+{{quoteForm.value.characters.length - 1}}
-                        {{quoteForm.value.characters?.length === 2 ? 'other' : 'others'}})
-                    </span>
+                    {{quoteForm.value.characters | selectCharacterForm }}
                 </mat-select-trigger>
                 <mat-option *ngFor="let character of allCharacters" [value]="character">{{character}}
                 </mat-option>
@@ -23,6 +21,7 @@
         </mat-form-field>
         <br>
         <br>
-        <button mat-flat-button color="primary" type="submit" [disabled]="!quoteForm.valid || isSubmitting">{{isSubmitting? 'Submitting...' : 'Submit'}}</button>
+        <button mat-flat-button color="primary" type="submit"
+            [disabled]="!quoteForm.valid || isSubmitting">{{isSubmitting? 'Submitting...' : 'Submit'}}</button>
     </form>
 </app-align-center>
