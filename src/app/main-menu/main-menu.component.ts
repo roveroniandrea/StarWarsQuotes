@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-main-menu',
@@ -10,7 +12,7 @@ export class MainMenuComponent implements OnInit {
   links: {}[];
   activeLink: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
     this.links = [{
       url: '/',
       label: 'Home'
@@ -24,6 +26,7 @@ export class MainMenuComponent implements OnInit {
       label: 'About'
     }];
 
+    iconRegistry.addSvgIcon('github-logo', sanitizer.bypassSecurityTrustResourceUrl('assets/github.svg'));
   }
 
   ngOnInit(): void {
